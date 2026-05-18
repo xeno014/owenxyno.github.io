@@ -12,7 +12,7 @@
   <!-- ========== STICKY NAVIGATION ========== -->
   <nav class="navbar" id="navbar" aria-label="Main navigation">
     <div class="navbar__inner container">
-      <a href="index.html#home" class="navbar__brand">Owen</a>
+      <a href="index.html#home" class="navbar__brand">xyno</a>
 
       <button
         type="button"
@@ -40,6 +40,13 @@
   <!-- ========== HERO ========== -->
   <header class="hero" id="home">
     <div class="hero__inner container reveal">
+      <img
+        src="assets/images/profile.jpg"
+        alt="Portrait of Owen Lourd L. Ravina"
+        class="profile-photo"
+        width="160"
+        height="160"
+      />
       <p class="hero__greeting">Hi, I'm</p>
       <h1 class="hero__name">Owen Lourd L. Ravina</h1>
       <p class="hero__title">Aspiring System Developer</p>
@@ -53,6 +60,7 @@
       <div class="hero__actions">
         <a href="#projects" class="btn btn--primary">View Projects</a>
         <a href="about.html" class="btn btn--ghost">About Me</a>
+        <a href="assets/documents/resume.pdf" class="btn btn--ghost" target="_blank" rel="noopener noreferrer">View CV</a>
       </div>
     </div>
   </header>
@@ -173,13 +181,67 @@
           <p class="section__lead">Open to collaborations, feedback, and learning opportunities.</p>
         </header>
 
-        <div class="contact-card reveal">
-          <p>Feel free to reach out — I'd love to connect.</p>
-          <div class="contact-links">
-            <a href="mailto:owen.ravina14@gmail.com" class="contact-links__item">owen.ravina14@gmail.com</a>
-            <a href="https://github.com/xeno014" class="contact-links__item" target="_blank" rel="noopener noreferrer">github.com/xeno014</a>
+        <div class="contact-grid reveal">
+          <div class="contact-panel contact-panel--details">
+            <h3 class="contact-panel__title">Contact Details</h3>
+            <p class="contact-panel__intro">Feel free to reach out — I'd love to connect.</p>
+            <ul class="contact-detail-list">
+              <li>
+                <a href="mailto:owen.ravina14@gmail.com" class="contact-detail">
+                  <span class="contact-detail__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg>
+                  </span>
+                  <span class="contact-detail__text">owen.ravina14@gmail.com</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/xeno014" class="contact-detail" target="_blank" rel="noopener noreferrer">
+                  <span class="contact-detail__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.32 6.84 9.67.5.1.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.36-3.37-1.36-.45-1.18-1.12-1.49-1.12-1.49-.92-.64.07-.63.07-.63 1.02.07 1.55 1.06 1.55 1.06.9 1.57 2.36 1.12 2.94.86.09-.67.35-1.12.64-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.02A9.3 9.3 0 0 1 12 6.84c.85.004 1.71.12 2.51.35 1.91-1.29 2.75-1.02 2.75-1.02.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.07.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.8 0 .27.18.58.69.48A10.03 10.03 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg>
+                  </span>
+                  <span class="contact-detail__text">github.com/xeno014</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://wa.me/639994950948" class="contact-detail" target="_blank" rel="noopener noreferrer">
+                  <span class="contact-detail__icon contact-detail__icon--whatsapp" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+                  </span>
+                  <span class="contact-detail__text">WhatsApp · +63 999 495 0948</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://t.me/+639994950948" class="contact-detail" target="_blank" rel="noopener noreferrer">
+                  <span class="contact-detail__icon contact-detail__icon--telegram" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                  </span>
+                  <span class="contact-detail__text">Telegram · +63 999 495 0948</span>
+                </a>
+              </li>
+            </ul>
           </div>
-          <a href="about.html" class="btn btn--ghost">Read my story →</a>
+
+          <div class="contact-panel contact-panel--form">
+            <h3 class="contact-panel__title">Send a Message</h3>
+            <p class="contact-panel__intro">Fill each step in order. The next field unlocks when the current one is complete.</p>
+            <form id="contact-form" class="contact-form" novalidate>
+              <div class="form-group">
+                <label for="contact-name">1. Your name</label>
+                <input type="text" id="contact-name" name="name" autocomplete="name" placeholder="Enter your full name" required />
+              </div>
+              <div class="form-group form-group--locked" id="email-group">
+                <label for="contact-email">2. Your email</label>
+                <input type="email" id="contact-email" name="email" autocomplete="email" placeholder="Enter your email address" disabled required />
+                <p class="form-hint" id="email-hint">Complete your name first.</p>
+              </div>
+              <div class="form-group form-group--locked" id="message-group">
+                <label for="contact-message">3. Message</label>
+                <textarea id="contact-message" name="message" rows="5" placeholder="Write your message here" disabled required></textarea>
+                <p class="form-hint" id="message-hint">Enter a valid email first.</p>
+              </div>
+              <button type="submit" class="btn btn--primary contact-form__submit" id="contact-submit" disabled>Send Message</button>
+            </form>
+          </div>
         </div>
       </div>
     </section>

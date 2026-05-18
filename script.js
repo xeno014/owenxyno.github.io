@@ -180,4 +180,78 @@
 
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
+
+  /* ========== Contact form — progressive unlock + mailto send ========== */
+  var contactForm = document.getElementById("contact-form");
+  if (contactForm) {
+    var nameInput = document.getElementById("contact-name");
+    var emailInput = document.getElementById("contact-email");
+    var messageInput = document.getElementById("contact-message");
+    var emailGroup = document.getElementById("email-group");
+    var messageGroup = document.getElementById("message-group");
+    var emailHint = document.getElementById("email-hint");
+    var messageHint = document.getElementById("message-hint");
+    var submitBtn = document.getElementById("contact-submit");
+    var RECIPIENT = "owen.ravina14@gmail.com";
+
+    function hasName() {
+      return nameInput.value.trim().length > 0;
+    }
+
+    function isValidEmail(value) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
+    }
+
+    function updateFormState() {
+      var nameOk = hasName();
+      var emailOk = isValidEmail(emailInput.value);
+
+      if (nameOk) {
+        emailGroup.classList.remove("form-group--locked");
+        emailInput.disabled = false;
+        if (emailHint) emailHint.classList.add("is-hidden");
+      } else {
+        emailGroup.classList.add("form-group--locked");
+        emailInput.disabled = true;
+        emailInput.value = "";
+        if (emailHint) emailHint.classList.remove("is-hidden");
+      }
+
+      if (nameOk && emailOk) {
+        messageGroup.classList.remove("form-group--locked");
+        messageInput.disabled = false;
+        if (messageHint) messageHint.classList.add("is-hidden");
+      } else {
+        messageGroup.classList.add("form-group--locked");
+        messageInput.disabled = true;
+        messageInput.value = "";
+        if (messageHint) messageHint.classList.remove("is-hidden");
+      }
+
+      var messageOk = messageInput.value.trim().length > 0;
+      submitBtn.disabled = !(nameOk && emailOk && messageOk);
+    }
+
+    nameInput.addEventListener("input", updateFormState);
+    emailInput.addEventListener("input", updateFormState);
+    messageInput.addEventListener("input", updateFormState);
+
+    contactForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+      if (submitBtn.disabled) return;
+
+      var name = nameInput.value.trim();
+      var email = emailInput.value.trim();
+      var message = messageInput.value.trim();
+      var subject = encodeURIComponent("Portfolio message from " + name);
+      var body = encodeURIComponent(
+        "Name: " + name + "\nReply-to: " + email + "\n\n" + message
+      );
+
+      window.location.href =
+        "mailto:" + RECIPIENT + "?subject=" + subject + "&body=" + body;
+    });
+
+    updateFormState();
+  }
 })();
