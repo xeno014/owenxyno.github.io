@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
+  <script>document.documentElement.classList.replace("no-js", "js");</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Portfolio of Owen Lourd L. Ravina — aspiring system developer focused on web development and automation." />
+  <meta name="description" content="Portfolio of Owen Lourd L. Ravina — IT Systems &amp; Automation Specialist with experience in software analysis, infrastructure support, and web-based system development." />
   <title>Owen Lourd L. Ravina | Home</title>
+  <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/axiforma" />
   <link rel="stylesheet" href="style.css" />
   <link rel="preload" href="assets/images/profile.jpg" as="image" />
 </head>
@@ -27,7 +29,7 @@
   <!-- ========== STICKY NAVIGATION ========== -->
   <nav class="navbar" id="navbar" aria-label="Main navigation">
     <div class="navbar__inner container">
-      <a href="index.html#home" class="navbar__brand">xYno</a>
+      <a href="index.html#home" class="navbar__brand">xyno</a>
 
       <button
         type="button"
@@ -54,27 +56,37 @@
 
   <!-- ========== HERO ========== -->
   <header class="hero" id="home">
-    <div class="hero__inner container reveal">
-      <img
-        src="assets/images/profile.jpg"
-        alt="Portrait of Owen Lourd L. Ravina"
-        class="profile-photo"
-        width="160"
-        height="160"
-        decoding="async"
-        loading="eager"
-      />
-      <p class="hero__greeting">Hi, I'm</p>
-      <h1 class="hero__name">Owen Lourd L. Ravina</h1>
-      <p class="hero__title">Aspiring System Developer</p>
-      <p class="hero__subtitle">
-        Web development · AI-assisted workflows · Future Automation Specialist
+    <div class="hero__inner container hero--sequence" id="hero-inner">
+      <div class="hero__stage hero__stage--photo">
+        <img
+          src="assets/images/profile.jpg"
+          alt="Portrait of Owen Lourd L. Ravina"
+          class="profile-photo"
+          width="160"
+          height="160"
+          decoding="async"
+          loading="eager"
+        />
+      </div>
+      <p class="hero__greeting hero__stage hero__stage--greeting">Hi, I'm</p>
+      <h1 class="hero__name hero__stage hero__stage--name">Owen Lourd L. Ravina</h1>
+      <p class="hero__role hero__stage hero__stage--role">Workflow System Architect & IT Software-Hardware Consultant</p>
+      <div
+        class="hero__terminal hero__stage hero__stage--terminal"
+        role="region"
+        aria-label="Areas of specialization"
+      >
+        <p class="hero__terminal-line">
+          <span class="hero__terminal-prompt" aria-hidden="true">&gt;</span>
+          <span class="hero__terminal-output">
+            <span class="hero__terminal-text" id="hero-typewriter" aria-live="polite"></span><span class="hero__terminal-cursor" id="hero-typewriter-cursor" aria-hidden="true">_</span>
+          </span>
+        </p>
+      </div>
+      <p class="hero__subtitle hero__stage hero__stage--subtitle">
+        Software Analysis · Infrastructure Support · Workflow Optimization · Web Systems
       </p>
-      <p class="hero__mission">
-        I build clean, reliable web experiences and learn how to automate workflows
-        so I can ship projects faster and smarter.
-      </p>
-      <div class="hero__actions">
+      <div class="hero__actions hero__stage hero__stage--actions">
         <a href="#projects" class="btn btn--primary">View Projects</a>
         <a href="about.html" class="btn btn--ghost">About Me</a>
         <a href="assets/documents/resume.pdf" class="btn btn--ghost" target="_blank" rel="noopener noreferrer">View CV</a>

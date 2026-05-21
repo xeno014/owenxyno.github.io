@@ -16,7 +16,7 @@
     "Loading Assets...",
     "Launching Interface...",
   ];
-  var MIN_LOADER_MS = 1400;
+  var MIN_LOADER_MS = 2500;
 
   function initPreloader() {
     if (!preloader) {
@@ -104,12 +104,158 @@
       window.setTimeout(function () {
         preloader.setAttribute("aria-hidden", "true");
       }, 600);
+
+      document.dispatchEvent(new CustomEvent("portfolio:loaded"));
     }
 
     window.setTimeout(tryFinish, MIN_LOADER_MS + 2500);
   }
 
   initPreloader();
+
+  /* ========== Hero staged reveal + typewriter (home only) ========== */
+  var HERO_INITIAL_DELAY_MS = 2500;
+  var HERO_STAGGER_MS = 480;
+  var HERO_TYPEWRITER_PHRASES = [
+    "IT Systems & Automation needs? Message me.",
+    "Infrastructure Support & Network Setup",
+    "Want a Software-Hardware System Analysis? My specialty.",
+    "Wanted a Workflow Optimization? Contact me.",
+    "Want a Web-Based System Development? Connect with me.",
+    "Need an IT Software & Hardware Consultation? Reach out to me.",
+  ];
+
+  function prefersReducedMotion() {
+    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  }
+
+  function revealHeroStage(selector) {
+    var el = document.querySelector(selector);
+    if (el) {
+      el.classList.add("is-revealed");
+    }
+  }
+
+  function initHeroTypewriter() {
+    var textEl = document.getElementById("hero-typewriter");
+    if (!textEl) return null;
+
+    var typeSpeed = 35;
+    var deleteSpeed = 20;
+    var phraseIndex = 0;
+    var charIndex = 0;
+    var isDeleting = false;
+    var timerId = null;
+    var stopped = false;
+
+    function pauseMs() {
+      return 1200 + Math.floor(Math.random() * 600);
+    }
+
+    function schedule(fn, delay) {
+      timerId = window.setTimeout(fn, delay);
+    }
+
+    function tick() {
+      if (stopped) return;
+
+      var current = HERO_TYPEWRITER_PHRASES[phraseIndex];
+
+      if (!isDeleting) {
+        charIndex += 1;
+        textEl.textContent = current.slice(0, charIndex);
+
+        if (charIndex >= current.length) {
+          schedule(function () {
+            isDeleting = true;
+            tick();
+          }, pauseMs());
+          return;
+        }
+
+        schedule(tick, typeSpeed);
+        return;
+      }
+
+      charIndex -= 1;
+      textEl.textContent = current.slice(0, charIndex);
+
+      if (charIndex <= 0) {
+        isDeleting = false;
+        phraseIndex = (phraseIndex + 1) % HERO_TYPEWRITER_PHRASES.length;
+        schedule(tick, pauseMs());
+        return;
+      }
+
+      schedule(tick, deleteSpeed);
+    }
+
+    tick();
+
+    return function destroy() {
+      stopped = true;
+      if (timerId) {
+        window.clearTimeout(timerId);
+      }
+    };
+  }
+
+  function runHeroRevealSequence() {
+    var heroInner = document.getElementById("hero-inner");
+    if (!heroInner) return;
+
+    if (prefersReducedMotion()) {
+      heroInner.querySelectorAll(".hero__stage").forEach(function (stage) {
+        stage.classList.add("is-revealed");
+      });
+      var reducedText = document.getElementById("hero-typewriter");
+      if (reducedText) {
+        reducedText.textContent = HERO_TYPEWRITER_PHRASES[0];
+      }
+      return;
+    }
+
+    var steps = [
+      ".hero__stage--photo",
+      ".hero__stage--greeting",
+      ".hero__stage--name",
+      ".hero__stage--role",
+      ".hero__stage--terminal",
+      ".hero__stage--subtitle",
+      ".hero__stage--actions",
+    ];
+
+    var stepIndex = 0;
+
+    function revealNext() {
+      if (stepIndex >= steps.length) return;
+
+      revealHeroStage(steps[stepIndex]);
+
+      if (steps[stepIndex] === ".hero__stage--terminal") {
+        window.setTimeout(initHeroTypewriter, 520);
+      }
+
+      stepIndex += 1;
+      if (stepIndex < steps.length) {
+        window.setTimeout(revealNext, HERO_STAGGER_MS);
+      }
+    }
+
+    window.setTimeout(revealNext, HERO_INITIAL_DELAY_MS);
+  }
+
+  function initHeroExperience() {
+    if (!document.getElementById("hero-inner")) return;
+
+    if (document.body.classList.contains("is-loaded")) {
+      runHeroRevealSequence();
+    } else {
+      document.addEventListener("portfolio:loaded", runHeroRevealSequence, { once: true });
+    }
+  }
+
+  initHeroExperience();
 
   var SCROLL_TOP_THRESHOLD = 300;
   var NAVBAR = document.getElementById("navbar");
